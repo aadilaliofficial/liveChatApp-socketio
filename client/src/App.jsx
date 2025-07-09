@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
-const socket = io('http://localhost:3000','https://livechatapp-socketio.vercel.app');
+const socket = io(
+  import.meta.env.PROD
+    ? 'https://livechatapp-socketio.onrender.com'
+    : 'http://localhost:3000'
+);
 
 function App() {
   const [chatActive, setChatActive] = useState(false);
